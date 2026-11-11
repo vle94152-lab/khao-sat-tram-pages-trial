@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Khảo sát trạm · Bản thử độc lập</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./config.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <div><p class="eyebrow">Khảo sát trạm</p><h1>Bản thử độc lập</h1></div>
+      <button id="logout" class="quiet" type="button" hidden>Đổi tài khoản</button>
+    </header>
+    <p id="message" role="status" aria-live="polite" hidden></p>
+    <section id="entry" class="card">
+      <h2>Đăng nhập</h2>
+      <p>Sử dụng tài khoản Google tham gia bản thử.</p>
+      <button id="login" class="primary" type="button" disabled>Đăng nhập bằng Google</button>
+      <p class="muted" id="setup" role="status"></p>
+    </section>
+    <div id="workspace" hidden>
+      <section class="account">
+        <div><strong id="email"></strong><p id="access" class="muted"></p></div>
+        <button type="button" id="refresh" class="quiet">Làm mới</button>
+      </section>
+      <section id="admin" class="card" hidden>
+        <h2>Phân công nhân viên</h2>
+        <p id="employeeEmail"></p><p class="muted" id="employeeAccess"></p>
+        <button id="assignAction" class="quiet" type="button"></button>
+      </section>
+      <section id="empty" class="card" hidden>
+        <h2 id="emptyTitle"></h2><p id="emptyHint"></p>
+      </section>
+      <section id="survey" class="card" hidden>
+        <p class="eyebrow">Phiếu khảo sát thử</p>
+        <h2 id="stationName"></h2>
+        <form id="surveyForm">
+          <label for="height">Chiều cao nhà đặt trụ (m)</label>
+          <input id="height" type="number" inputmode="decimal" min="0" max="300" step="0.1" required autocomplete="off">
+          <div id="fixture">
+            <label class="choice"><input type="checkbox" id="photo"> Kèm ảnh trạm mẫu</label>
+            <p class="muted small">Ảnh giả lập có sẵn để đối chiếu trên Drive.</p>
+          </div>
+          <p class="muted" id="existingPhoto" hidden>Đã có ảnh trạm mẫu.</p>
+          <button id="save" class="primary" type="submit">Lưu phiếu</button>
+        </form>
+      </section>
+      <section id="progress" class="card" hidden>
+        <h2>Đồng bộ Google Drive</h2>
+        <dl>
+          <dt>Phiếu đã lưu</dt><dd id="savedVersion"></dd>
+          <dt>Drive xác nhận</dt><dd id="driveVersion"></dd>
+          <dt>Trong hàng đợi</dt><dd id="queued"></dd>
+        </dl>
+        <p class="muted small" id="syncHint" aria-live="polite"></p>
+      </section>
+    </div>
+    <noscript><p>Cần bật JavaScript để đăng nhập và lưu phiếu.</p></noscript>
+  </main>
+</body>
+</html>
